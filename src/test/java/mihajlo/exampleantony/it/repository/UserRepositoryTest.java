@@ -12,32 +12,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class UserRepositoryTest {
 
     @Autowired
-    UserRepository userRepository;
+    UserRepositoryForTest userRepositoryForTest;
 
     @Test
     public void contextLoads() {
     }
     @Test
     public void repositoryInit(){
-        if(userRepository == null){
-            assertThat(userRepository).isNotNull();
+        if(userRepositoryForTest == null){
+            assertThat(userRepositoryForTest).isNotNull();
         }
     }
     @Test
     public void saveUser(){
         User u = new User("mihajlo","123","mihajlo.rac@gmail.com","mihajlo","racic");
-        userRepository.save(u);
+        userRepositoryForTest.save(u);
         assertThat(u.getId()).isNotNull();
         Long savedUserId = u.getId();
-        u = userRepository.findById(savedUserId).get();
+        u = userRepositoryForTest.findById(savedUserId);
         assertThat(u.getEmail().equals("mihajlo.rac@gmail.com"));
-        assertThat(userRepository.findByUsername("m1") != null);
+        assertThat(userRepositoryForTest.findByUsername("m1") != null);
     }
     @Test
     public void multypleUserCreate(){
         User u = new User("mihajlo3","123","mihajlo.rac3@gmail.com","mihajlo","racic");
         User u2 = new User("mihajlo2","123","mihajlo.rac2@gmail.com","mihajlo","racic");
-        userRepository.save(u);
-        userRepository.save(u2);
+        userRepositoryForTest.save(u);
+        userRepositoryForTest.save(u2);
     }
 }

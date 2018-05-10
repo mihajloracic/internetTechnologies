@@ -7,7 +7,7 @@ import mihajlo.exampleantony.it.entity.User;
 import mihajlo.exampleantony.it.repository.CommentRepository;
 import mihajlo.exampleantony.it.repository.PlaceRepository;
 import mihajlo.exampleantony.it.repository.RatingRepository;
-import mihajlo.exampleantony.it.repository.UserRepository;
+import mihajlo.exampleantony.it.repository.UserRepositoryForTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class MockDataService {
 
     @Autowired
-    UserRepository userRepository;
+    UserRepositoryForTest userRepositoryForTest;
 
     @Autowired
     PlaceRepository placeRepository;
@@ -27,15 +27,15 @@ public class MockDataService {
     CommentRepository commentRepository;
 
     public void populateData(){
-        if(userRepository.findByUsername("m1").size() == 0){
-            User u = userRepository.save( new User("m1","123","m1.rac@gmail.com","mihajlo","racic"));
-            User u2 = userRepository.save( new User("m2","123","m2.rac@gmail.com","mihajlo","racic"));
-            User superAdmin = userRepository.save( new User("superadmin","123","super.rac@gmail.com","mihajlo","racic"));
-            User testUser = userRepository.save( new User("testUser","123","testUser.rac@gmail.com","mihajlo","racic"));
-            userRepository.save( new User("RatingTestUser","123","RatingTestUser.rac@gmail.com","mihajlo","racic"));
-            userRepository.save( new User("m3","123","m3.rac@gmail.com","mihajlo","racic"));
-            userRepository.save( new User("m4","123","m4.rac@gmail.com","mihajlo","racic"));
-            userRepository.save(superAdmin);
+        if(userRepositoryForTest.findByUsername("m1").size() == 0){
+            User u = userRepositoryForTest.save( new User("m1","123","m1.rac@gmail.com","mihajlo","racic"));
+            User u2 = userRepositoryForTest.save( new User("m2","123","m2.rac@gmail.com","mihajlo","racic"));
+            User superAdmin = userRepositoryForTest.save( new User("superadmin","123","super.rac@gmail.com","mihajlo","racic"));
+            User testUser = userRepositoryForTest.save( new User("testUser","123","testUser.rac@gmail.com","mihajlo","racic"));
+            userRepositoryForTest.save( new User("RatingTestUser","123","RatingTestUser.rac@gmail.com","mihajlo","racic"));
+            userRepositoryForTest.save( new User("m3","123","m3.rac@gmail.com","mihajlo","racic"));
+            userRepositoryForTest.save( new User("m4","123","m4.rac@gmail.com","mihajlo","racic"));
+            userRepositoryForTest.save(superAdmin);
             placeRepository.save(new Place("Bo","","",123.0,123,"Kaunas","pub",u));
             placeRepository.save(new Place("Bo2","","",123.0,123,"Kaunas","pub",u2));
             placeRepository.save(new Place("Bassement","","",123.0,123,"Kaunas","club",u));

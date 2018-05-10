@@ -5,7 +5,7 @@ import mihajlo.exampleantony.it.entity.User;
 import mihajlo.exampleantony.it.entity.dto.RatingDTO;
 import mihajlo.exampleantony.it.repository.PlaceRepository;
 import mihajlo.exampleantony.it.repository.RatingRepository;
-import mihajlo.exampleantony.it.repository.UserRepository;
+import mihajlo.exampleantony.it.repository.UserRepositoryForTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class RatingServiceTest {
     @Autowired
     MockDataService mockDataService;
     @Autowired
-    UserRepository userRepository;
+    UserRepositoryForTest userRepositoryForTest;
     @Autowired
     PlaceRepository placeRepository;
     @Autowired
@@ -35,7 +35,7 @@ public class RatingServiceTest {
     public void addOneRatting(){
         mockDataService.populateData();
         Place place = placeRepository.findByName("test2").get(0);
-        User user = userRepository.findByUsername("RatingTestUser").get(0);
+        User user = userRepositoryForTest.findByUsername("RatingTestUser").get(0);
         RatingDTO dto1 = new RatingDTO(user.getId(),place.getId(),5);
         ratingService.addRating(dto1, user);
         assert ratingRepository.getRatingByPlaceAndUser(place,user).size() == 1;
@@ -45,7 +45,7 @@ public class RatingServiceTest {
     public void changeRating(){
         mockDataService.populateData();
         Place place = placeRepository.findByName("test3").get(0);
-        User user = userRepository.findByUsername("RatingTestUser").get(0);
+        User user = userRepositoryForTest.findByUsername("RatingTestUser").get(0);
         RatingDTO dto1 = new RatingDTO(user.getId(),place.getId(),5);
         ratingService.addRating(dto1, user);
         assert ratingRepository.getRatingByPlaceAndUser(place,user).size() == 1;

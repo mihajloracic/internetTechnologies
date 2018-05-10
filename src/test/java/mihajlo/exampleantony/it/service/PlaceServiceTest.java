@@ -4,7 +4,7 @@ import javassist.NotFoundException;
 import mihajlo.exampleantony.it.entity.Place;
 import mihajlo.exampleantony.it.entity.User;
 import mihajlo.exampleantony.it.repository.PlaceRepository;
-import mihajlo.exampleantony.it.repository.UserRepository;
+import mihajlo.exampleantony.it.repository.UserRepositoryForTest;
 import mihajlo.exampleantony.it.service.place.AdminPlaceService;
 import mihajlo.exampleantony.it.service.place.SuperAdminPlaceService;
 import mihajlo.exampleantony.it.service.place.UserPlaceService;
@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class PlaceServiceTest {
     @Autowired
     PlaceRepository placeRepository;
     @Autowired
-    UserRepository userRepository;
+    UserRepositoryForTest userRepositoryForTest;
     @Autowired
     AdminPlaceService adminPlaceService;
     @Autowired
@@ -38,35 +39,36 @@ public class PlaceServiceTest {
     @Test
     public void mockDataTest(){
             mockDataService.populateData();
-            assert userRepository.findByUsername("m2").size() != 0;
+            assert userRepositoryForTest.findByUsername("m2").size() != 0;
     }
     @Test
     public void repositoryInit(){
         assertThat(placeRepository).isNotNull();
-        assertThat(userRepository).isNotNull();
+        assertThat(userRepositoryForTest).isNotNull();
         assertThat(adminPlaceService).isNotNull();
         assertThat(superAdminPlaceService).isNotNull();
         assertThat(mockDataService).isNotNull();
     }
 
     @Test
+    @Transactional
     public void getMyPlacesTest(){
         mockDataService.populateData();
-        List<User> users =  userRepository.findByUsername("m2");
-        User user = userRepository.findByUsername("m2").get(0);
+        List<User> users =  userRepositoryForTest.findByUsername("m2");
+        User user = userRepositoryForTest.findByUsername("m2").get(0);
         List<Place> places =adminPlaceService.getMyPlaces(user);
         assert places.size() == 1;
     }
     public void getMyPlacesTest2(){
         mockDataService.populateData();
-        User user = userRepository.findByUsername("m1").get(0);
+        User user = userRepositoryForTest.findByUsername("m1").get(0);
         List<Place> places =adminPlaceService.getMyPlaces(user);
         assert places.size() == 4;
     }
     @Test
     public void savePlaceTest()  {
         mockDataService.populateData();
-        User user = userRepository.findByUsername("m3").get(0);
+        User user = userRepositoryForTest.findByUsername("m3").get(0);
         Place p = null;
         try {
             p = adminPlaceService.save(new Place("New place from the test","","",123.0,123,"Kaunas","pub",user),user);
@@ -96,7 +98,7 @@ public class PlaceServiceTest {
     @Test
     public void approvePlace(){
         mockDataService.populateData();
-        User admin = userRepository.findByUsername("superadmin").get(0);
+        User admin = userRepositoryForTest.findByUsername("superadmin").get(0);
         superAdminPlaceService.approvePlace(placeRepository.findByName("Bo").get(0),admin);
         assert  placeRepository.findByName("Bo").get(0).getApproved();
     }

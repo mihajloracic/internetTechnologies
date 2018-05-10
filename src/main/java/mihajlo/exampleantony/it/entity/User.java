@@ -3,6 +3,7 @@ package mihajlo.exampleantony.it.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.HashSet;
@@ -26,11 +27,10 @@ public class User {
     private String firstname;
     private String lastname;
     private String image;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "userCreated",fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "userCreated",fetch = FetchType.LAZY)
     private List<Place> myPlaces;
     private Date dateCreated;
     @JsonIgnore
-    String roles;
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.PERSIST,
@@ -38,8 +38,29 @@ public class User {
             },
             mappedBy = "users")
     Set<Poll> polls = new HashSet<>();
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    List<Role> roles;
     public User(){
 
+    }
+
+    public User(String username, String password, List<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    public User(String username, String password, String email, String firstname, String lastname, String image, List<Place> myPlaces, Date dateCreated, Set<Poll> polls, List<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.image = image;
+        this.myPlaces = myPlaces;
+        this.dateCreated = dateCreated;
+        this.polls = polls;
+        this.roles = roles;
     }
 
     public User(String username, String password, String email, String firstname, String lastname) {
@@ -133,11 +154,11 @@ public class User {
         this.dateCreated = dateCreated;
     }
 
-    public String getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 

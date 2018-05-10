@@ -19,7 +19,7 @@ public class RatingRepositroyTest {
     @Autowired
     MockDataService mockDataService;
     @Autowired
-    UserRepository userRepository;
+    UserRepositoryForTest userRepositoryForTest;
     @Autowired
     PlaceRepository placeRepository;
 
@@ -34,7 +34,7 @@ public class RatingRepositroyTest {
     public void getRatingForUserAndPlace(){
         mockDataService.populateData();
         Place place = placeRepository.findByName("test1").get(0);
-        User user = userRepository.findByUsername("m2").get(0);
+        User user = userRepositoryForTest.findByUsername("m2").get(0);
         assert ratingRepository.getRatingByPlaceAndUser(place,user).size() == 1;
         mockDataService.populateData();
     }

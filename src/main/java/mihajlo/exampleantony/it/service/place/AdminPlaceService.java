@@ -4,7 +4,7 @@ import javassist.NotFoundException;
 import mihajlo.exampleantony.it.entity.Place;
 import mihajlo.exampleantony.it.entity.User;
 import mihajlo.exampleantony.it.repository.PlaceRepository;
-import mihajlo.exampleantony.it.repository.UserRepository;
+import mihajlo.exampleantony.it.repository.UserRepositoryForTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ public class AdminPlaceService {
     @Autowired
     PlaceRepository placeRepository;
     @Autowired
-    UserRepository userRepository;
+    UserRepositoryForTest userRepositoryForTest;
 
     public Place save(Place place, User user) throws NotFoundException {
         if(place.getUserCreated().getId() != user.getId()){

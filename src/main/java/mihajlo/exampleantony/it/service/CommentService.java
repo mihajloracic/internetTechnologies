@@ -6,7 +6,7 @@ import mihajlo.exampleantony.it.entity.User;
 import mihajlo.exampleantony.it.entity.dto.CommentDTO;
 import mihajlo.exampleantony.it.repository.CommentRepository;
 import mihajlo.exampleantony.it.repository.PlaceRepository;
-import mihajlo.exampleantony.it.repository.UserRepository;
+import mihajlo.exampleantony.it.repository.UserRepositoryForTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CommentService {
     @Autowired
-    UserRepository userRepository;
+    UserRepositoryForTest userRepositoryForTest;
     @Autowired
     PlaceRepository placeRepository;
     @Autowired

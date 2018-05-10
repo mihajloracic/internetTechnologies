@@ -19,7 +19,7 @@ public class PlaceRepositoryTest {
     @Autowired
     PlaceRepository placeRepository;
     @Autowired
-    UserRepository userRepository;
+    UserRepositoryForTest userRepositoryForTest;
 
     @Test
     public void repositoryInit(){
@@ -31,16 +31,17 @@ public class PlaceRepositoryTest {
         User u = new User("unique","123","unique.rac@gmail.com","mihajlo","racic");
         Place p = new Place("lepo mesto","","",123.0,123,"","",u);
         Place p2 = new Place("jos jedno mesto","","",123.0,123,"","",u);
-        userRepository.save(u);
+        userRepositoryForTest.save(u);
         placeRepository.save(p);
         placeRepository.save(p2);
 
     }
 
     @Test
+    @Transactional
     public void doPlacesGetConnectedWithUser(){
-        User u = userRepository.findByUsername("unique").get(0);
-        List<Place> places = userRepository.findById(u.getId()).get().getMyPlaces();
+        User u = userRepositoryForTest.findByUsername("unique").get(0);
+        List<Place> places = userRepositoryForTest.findById(u.getId()).getMyPlaces();
         assert u.getMyPlaces().size() >= 2;
     }
 }
