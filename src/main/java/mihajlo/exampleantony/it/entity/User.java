@@ -28,6 +28,7 @@ public class User {
     private String lastname;
     private String image;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "userCreated",fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Place> myPlaces;
     private Date dateCreated;
     @JsonIgnore
@@ -39,6 +40,7 @@ public class User {
             mappedBy = "users")
     Set<Poll> polls = new HashSet<>();
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
     List<Role> roles;
     public User(){
 

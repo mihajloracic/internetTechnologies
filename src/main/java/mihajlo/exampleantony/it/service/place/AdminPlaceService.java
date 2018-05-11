@@ -26,6 +26,7 @@ public class AdminPlaceService {
     }
 
     public List<Place> getMyPlaces(User user){
+        //TODO napraviti da zove preko repositorija
         return user.getMyPlaces();
     }
 }

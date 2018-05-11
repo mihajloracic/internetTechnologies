@@ -10,6 +10,7 @@ import mihajlo.exampleantony.it.repository.RatingRepository;
 import mihajlo.exampleantony.it.repository.UserRepositoryForTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MockDataService {
@@ -25,8 +26,12 @@ public class MockDataService {
 
     @Autowired
     CommentRepository commentRepository;
-
+    @Transactional
     public void populateData(){
+        commentRepository.deleteAll();
+        ratingRepository.deleteAll();
+        placeRepository.deleteAll();
+        userRepositoryForTest.deleteAll();
         if(userRepositoryForTest.findByUsername("m1").size() == 0){
             User u = userRepositoryForTest.save( new User("m1","123","m1.rac@gmail.com","mihajlo","racic"));
             User u2 = userRepositoryForTest.save( new User("m2","123","m2.rac@gmail.com","mihajlo","racic"));

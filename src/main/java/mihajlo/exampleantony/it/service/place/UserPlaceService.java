@@ -23,4 +23,8 @@ public class UserPlaceService {
     public List<Place> getPlacesByCityAndType(String city, String type){
         return placeRepository.findApprovedPlacesInCityAndType(city,type);
     }
+
+    public Place getPlaceById(Long id){
+        return  placeRepository.findOne(id);
+    }
 }
