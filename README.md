@@ -10,8 +10,7 @@ shown in the following example:</p><pre class="screen">$ export MAVEN_OPTS=-Xmx1
 
 
 <h2> Get access token example </h2>
-``` 
-var data = null;
+<div class="section><pre class="screen">var data = null;
 
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
@@ -27,5 +26,5 @@ xhr.setRequestHeader("authorization", "Basic bXktdHJ1c3RlZC1jbGllbnQ6c2VjcmV0");
 xhr.setRequestHeader("cache-control", "no-cache");
 xhr.setRequestHeader("postman-token", "ed0c00f7-697b-6b86-6d2c-789414b01b7d");
 
-xhr.send(data);
-```
+xhr.send(data);</pre>
+</div>
