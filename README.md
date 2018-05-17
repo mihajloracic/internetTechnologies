@@ -7,3 +7,25 @@ The above copyright notice and this permission notice shall be included in all c
 and run your application. Applications run in an exploded form, as they do in your IDE.
 The following example shows a typical Maven command to run a Spring Boot application:</p><pre class="screen">$ mvn spring-boot:run</pre><p>You might also want to use the <code class="literal">MAVEN_OPTS</code> operating system environment variable, as
 shown in the following example:</p><pre class="screen">$ export MAVEN_OPTS=-Xmx1024m</pre></div>
+
+
+<h2> Get access token example </h2>
+``` 
+var data = null;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "http://localhost:8080/oauth/token?grant_type=password&username=user&password=user");
+xhr.setRequestHeader("authorization", "Basic bXktdHJ1c3RlZC1jbGllbnQ6c2VjcmV0");
+xhr.setRequestHeader("cache-control", "no-cache");
+xhr.setRequestHeader("postman-token", "ed0c00f7-697b-6b86-6d2c-789414b01b7d");
+
+xhr.send(data);
+```
