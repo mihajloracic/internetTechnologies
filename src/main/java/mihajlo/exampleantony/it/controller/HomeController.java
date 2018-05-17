@@ -15,10 +15,6 @@ public class HomeController {
     @Autowired
     UserService userService;
 
-    @GetMapping(value = "/")
-    public String home(){
-        return "Hello";
-    }
 
     @GetMapping(value = "/private")
     public String privateArea(){

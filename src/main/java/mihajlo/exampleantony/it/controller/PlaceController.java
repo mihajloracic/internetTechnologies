@@ -64,7 +64,6 @@ public class PlaceController {
     public Place addPlace(@RequestBody Place place) throws NotFoundException {
         CustomUserDetail userDetail = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userService.getUser(userDetail);
-        place.setUserCreated(user);
         return adminPlaceService.save(place,user);
     }
 }

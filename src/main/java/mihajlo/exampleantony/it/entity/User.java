@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 import java.sql.Date;
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -72,6 +69,7 @@ public class User {
         this.firstname = firstname;
         this.lastname = lastname;
         this.dateCreated =  new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        this.roles = Arrays.asList(new Role("USER"));
     }
 
     public User(String username, String password, String email, String firstname, String lastname, String image) {

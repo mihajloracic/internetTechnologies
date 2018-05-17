@@ -38,7 +38,6 @@ public class PlaceRepositoryTest {
     }
 
     @Test
-    @Transactional
     public void doPlacesGetConnectedWithUser(){
         User u = userRepositoryForTest.findByUsername("unique").get(0);
         List<Place> places = userRepositoryForTest.findById(u.getId()).getMyPlaces();
