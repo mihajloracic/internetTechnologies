@@ -40,7 +40,6 @@ public class MockDataService {
             userRepositoryForTest.save( new User("RatingTestUser","123","RatingTestUser.rac@gmail.com","mihajlo","racic"));
             userRepositoryForTest.save( new User("m3","123","m3.rac@gmail.com","mihajlo","racic"));
             userRepositoryForTest.save( new User("m4","123","m4.rac@gmail.com","mihajlo","racic"));
-            userRepositoryForTest.save(superAdmin);
             placeRepository.save(new Place("Bo","","",123.0,123,"Kaunas","pub",u));
             placeRepository.save(new Place("Bo2","","",123.0,123,"Kaunas","pub",u2));
             placeRepository.save(new Place("Bassement","","",123.0,123,"Kaunas","club",u));
