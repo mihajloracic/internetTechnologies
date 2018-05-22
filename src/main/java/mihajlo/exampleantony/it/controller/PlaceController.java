@@ -66,4 +66,10 @@ public class PlaceController {
         User user = userService.getUser(userDetail);
         return adminPlaceService.save(place,user);
     }
+
+    @RequestMapping(value = "place/byId",method = RequestMethod.GET)
+    public Place getPlaceById(@RequestParam("id") Long id){
+        Place place = userPlaceService.getPlaceById(id);
+        return place;
+    }
 }

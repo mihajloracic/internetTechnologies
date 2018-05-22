@@ -57,6 +57,7 @@ public class MockDataService {
             ratingRepository.save(new Rating(u,place1,5));
             ratingRepository.save(new Rating(u2,place1,3));
             Place commentPlace = new Place("comment place","","",123.0,123,"test city","pub",testUser);
+            commentPlace.setApproved(true);
             placeRepository.save(commentPlace);
             commentRepository.save(new Comment("this place sucks", u, commentPlace));
             commentRepository.save(new Comment("this place is great", u, commentPlace));

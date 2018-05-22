@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class CommentService {
@@ -31,5 +33,10 @@ public class CommentService {
         if(place.getUserCreated().getId() == user.getId()){
             commentRepository.delete(comment);
         }
+    }
+
+    public List<Comment> getCommentsForPlace(Long placeId){
+        Place place = placeRepository.findOne(placeId);
+        return commentRepository.getCommentByPlace(place);
     }
 }
