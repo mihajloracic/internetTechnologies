@@ -2,6 +2,9 @@ app.controller('placeViewController', function($scope, $http) {
     $http.get("/place/byId?id="+getUrlVars()["id"]).then(function (response) {
         $scope.place = response.data;
     });
+    $http.get("/comment?id="+getUrlVars()["id"]).then(function (response) {
+        $scope.comments = response.data;
+    });
 });
 function getUrlVars()
 {
