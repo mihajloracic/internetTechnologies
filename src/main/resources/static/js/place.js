@@ -1,10 +1,36 @@
-app.controller('placeViewController', function($scope, $http) {
+app.controller('placeViewController', function($scope,$rootScope, $http) {
     $http.get("/place/byId?id="+getUrlVars()["id"]).then(function (response) {
         $scope.place = response.data;
     });
     $http.get("/comment?id="+getUrlVars()["id"]).then(function (response) {
         $scope.comments = response.data;
+        console.log(response.data)
     });
+    $scope.addComment = function(ct){
+        var data = {
+            userId: $rootScope.user.id,
+            placesId: getUrlVars()["id"],
+            commentText : ct
+        };
+
+        var config = {
+            headers : {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        $http.post('/comment?access_token='+localStorage.getItem("token"), data, config).then(
+            function(response){
+                console.log(response.data)
+                $scope.comments.push(response.data)
+                console.log($scope.comments)
+            },
+            function(response){
+                // failure callback
+            }
+        );
+
+    }
 });
 function getUrlVars()
 {

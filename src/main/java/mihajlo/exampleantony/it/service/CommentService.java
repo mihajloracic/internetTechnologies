@@ -22,11 +22,13 @@ public class CommentService {
     PlaceRepository placeRepository;
     @Autowired
     CommentRepository commentRepository;
+    @Transactional
     public Comment addComment(CommentDTO commentDTO,User user){
         if(commentDTO.userId != user.getId()){
             return null;
         }
-        return commentRepository.save( new Comment(commentDTO.getText(),user,placeRepository.getOne(commentDTO.getPlacesId())));
+         Comment comment = commentRepository.save( new Comment(commentDTO.getCommentText(),user,placeRepository.findOne(commentDTO.getPlacesId())));
+        return comment;
     }
     public void removeComment(Comment comment,User user){
         Place place = placeRepository.getOne(comment.getPlace().getId());

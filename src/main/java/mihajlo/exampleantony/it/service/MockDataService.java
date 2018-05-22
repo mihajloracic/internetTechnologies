@@ -26,6 +26,10 @@ public class MockDataService {
 
     @Autowired
     CommentRepository commentRepository;
+
+    @Autowired
+    UserService userService;
+
     @Transactional
     public void populateData(){
         commentRepository.deleteAll();
@@ -64,6 +68,7 @@ public class MockDataService {
             commentRepository.save(new Comment("really hot waitress", u, commentPlace));
             Place commentServicePlace = new Place("comment service","","",123.0,123,"test city","pub",testUser);
             placeRepository.save(commentServicePlace);
+            userService.save(new User("User","123","User.rac@gmail.com","mihajlo","racic"));
         }
     }
 }

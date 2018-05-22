@@ -14,7 +14,7 @@
 
     <div class="form-group">
       <label for="InputUsername">Username</label>
-      <input type="text" class="form-control" id="InputUsername" aria-describedby="UsernameHelp" placeholder="Enter username">
+      <input type="commentText" class="form-control" id="InputUsername" aria-describedby="UsernameHelp" placeholder="Enter username">
     </div>
 
     <div class="form-group">
@@ -45,12 +45,13 @@
         xhr.addEventListener("readystatechange", function () {
             console.log(this.readyState)
             if (this.readyState === 4) {
-                if(this.status === 401){
+                if(this.status >= 400){
                     window.alert("wrong credantials");
                     return;
                 }
                 cookie = JSON.parse(this.responseText)
                 localStorage.setItem('token', cookie.access_token);
+                localStorage.setItem('logedIn',true);
                 window.location.href = "/index.html";
 
             }

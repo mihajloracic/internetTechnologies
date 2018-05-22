@@ -1,11 +1,11 @@
 package mihajlo.exampleantony.it.entity.dto;
 
 public class CommentDTO {
-    public String text;
+    public String commentText;
     public Long userId;
     public Long placesId;
-    public CommentDTO(String text, Long userId,Long placeId) {
-        this.text = text;
+    public CommentDTO(String commentText, Long userId, Long placeId) {
+        this.commentText = commentText;
         this.userId = userId;
         this.placesId = placeId;
     }
@@ -22,12 +22,12 @@ public class CommentDTO {
         this.placesId = placesId;
     }
 
-    public String getText() {
-        return text;
+    public String getCommentText() {
+        return commentText;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setCommentText(String commentText) {
+        this.commentText = commentText;
     }
 
     public Long getUserId() {

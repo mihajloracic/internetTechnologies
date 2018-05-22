@@ -6,12 +6,13 @@
                     <h1 class="cta-title">{{place.name}}</h1>
                     <div class="cta-desc">
                         <p>{{place.description}}</p>
+                        <a ng-href="user.html?id={{place.userCreated.id}}">place.userCreated.username</a>
                         <p>createdBy: {{place.userCreated}}</p>
                         <p>This is a {{place.type}}</p>
                     </div>
                 </div>
                 <div class="col-md-3 cta-button">
-                    <a href="#" class="btn btn-lg btn-block btn-default">Go for It!</a>
+                    <a ng-href="/place.html?id={{place.id}}" class="btn btn-lg btn-block btn-default">Go for It!</a>
                 </div>
             </div>
         </div>
