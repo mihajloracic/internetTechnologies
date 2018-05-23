@@ -1,6 +1,10 @@
 app.controller('placeViewController', function($scope,$rootScope, $http) {
     $http.get("/place/byId?id="+getUrlVars()["id"]).then(function (response) {
         $scope.place = response.data;
+        $http.post("/rating/get",$scope.place).then(function (response) {
+            $scope.rating = response.data
+            console.log("rating"+response.data)
+        });
     });
     $http.get("/comment?id="+getUrlVars()["id"]).then(function (response) {
         $scope.comments = response.data;
@@ -18,7 +22,17 @@ app.controller('placeViewController', function($scope,$rootScope, $http) {
                 'Content-Type': 'application/json'
             }
         }
-
+        /rating/get
+        $http.post('/comment?access_token='+localStorage.getItem("token"), data, config).then(
+            function(response){
+                console.log(response.data)
+                $scope.comments.push(response.data)
+                console.log($scope.comments)
+            },
+            function(response){
+                // failure callback
+            }
+        );
         $http.post('/comment?access_token='+localStorage.getItem("token"), data, config).then(
             function(response){
                 console.log(response.data)
