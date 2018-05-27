@@ -1,0 +1,23 @@
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Place name</th>
+            <th scope="col">User creating</th>
+            <th scope="col">Approve</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="place in places">
+            <th scope="row">{{place.id}}</th>
+            <td><a ng-href="place.html?id={{place.id}}">{{place.name}}</a></td>
+            <td><a ng-href="user.html?id={{place.userCreated.id}}">{{place.userCreated.username}}</a></td>
+            <td><span class="glyphicon glyphicon-ok" ng-click="approve(place)"></span></a></td>
+            <td><span class="glyphicon glyphicon-trash" ng-click="delete(place)"></span></a></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>

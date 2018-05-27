@@ -13,13 +13,13 @@ public class Place {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
+    @Column(columnDefinition="TEXT")
     String description;
     String image;
     double lat;
     double lng;
     String city;
     String type;
-    @JsonIgnore
     Boolean approved;
     @ManyToOne
     User userCreated;

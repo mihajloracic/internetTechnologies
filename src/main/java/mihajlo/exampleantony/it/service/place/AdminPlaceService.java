@@ -19,6 +19,7 @@ public class AdminPlaceService {
     UserRepositoryForTest userRepositoryForTest;
 
     public Place save(Place place, User user) throws NotFoundException {
+        place.setApproved(false);
         if(place.getUserCreated().getId() != user.getId()){
             throw new NotFoundException("Unauhorized action");
         }
@@ -26,7 +27,6 @@ public class AdminPlaceService {
     }
 
     public List<Place> getMyPlaces(User user){
-        //TODO napraviti da zove preko repositorija
         return user.getMyPlaces();
     }
 }

@@ -8,6 +8,7 @@ import mihajlo.exampleantony.it.service.MockDataService;
 import mihajlo.exampleantony.it.service.StorageService;
 import mihajlo.exampleantony.it.service.UserService;
 import mihajlo.exampleantony.it.service.place.AdminPlaceService;
+import mihajlo.exampleantony.it.service.place.SuperAdminPlaceService;
 import mihajlo.exampleantony.it.service.place.UserPlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +19,9 @@ import java.util.List;
 
 @RestController
 public class PlaceController {
+    @Autowired
+    SuperAdminPlaceService superAdminPlaceService;
+
     @Autowired
     UserPlaceService userPlaceService;
 
@@ -70,6 +74,25 @@ public class PlaceController {
     @RequestMapping(value = "place/byId",method = RequestMethod.GET)
     public Place getPlaceById(@RequestParam("id") Long id){
         Place place = userPlaceService.getPlaceById(id);
+        return place;
+    }
+
+    @RequestMapping(value= "place/unapproved", method = RequestMethod.GET)
+    public List<Place> getUnApprovedPlaces(){
+        return superAdminPlaceService.getUnapprovedPlaces();
+    }
+
+    @RequestMapping(value = "place/approve", method = RequestMethod.POST)
+    public Place approvePlace(@RequestBody Place place){
+        CustomUserDetail userDetail = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getUser(userDetail);
+        return superAdminPlaceService.approvePlace(place,user);
+    }
+    @RequestMapping(value = "place/delete", method = RequestMethod.POST)
+    public Place deletePlace(@RequestBody Place place){
+        CustomUserDetail userDetail = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getUser(userDetail);
+        superAdminPlaceService.deletePlace(place,user);
         return place;
     }
 }

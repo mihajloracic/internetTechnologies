@@ -22,14 +22,14 @@ public class SuperAdminPlaceService {
         return placeRepository.findUnapprovedPlaces();
     }
 
-    public void approvePlace(Place place, User user){
+    public Place approvePlace(Place place, User user){
         //TODO check role super admin
         place.setApproved(true);
-        placeRepository.save(place);
+        return placeRepository.save(place);
     }
 
     public void deletePlace(Place place, User user){
         //TODO check role super admin
-        placeRepository.delete(place);
+         placeRepository.delete(place);
     }
 }

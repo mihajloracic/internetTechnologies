@@ -10,4 +10,5 @@ import java.util.List;
 public interface RatingRepository extends JpaRepository<Rating,Long> {
     public List<Rating> getRatingByPlace(Place place);
     public List<Rating> getRatingByPlaceAndUser(Place place, User user);
+
 }

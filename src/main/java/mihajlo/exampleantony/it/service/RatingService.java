@@ -21,6 +21,19 @@ public class RatingService {
     @Autowired
     PlaceRepository placeRepository;
 
+    public int getMyRating(RatingDTO ratingDTO, User user){
+        Place place = placeRepository.getOne(ratingDTO.placeId);
+        List<Rating> ratings = ratingRepository.getRatingByPlaceAndUser(place,user);
+        if(ratings.size() != 0){
+            Rating rating = ratings.get(0);
+            rating.setValue(ratingDTO.value);
+            ratingRepository.save(rating);
+            return rating.getValue();
+        }
+        return 0;
+    }
+
+
     public void addRating(RatingDTO ratingDTO, User user){
         Place place = placeRepository.getOne(ratingDTO.placeId);
         List<Rating> ratings = ratingRepository.getRatingByPlaceAndUser(place,user);
@@ -40,7 +53,7 @@ public class RatingService {
             ratingRepository.save(new Rating(user,place,ratingDTO.value));
         }
     }
-    public float getAverageRating(Place place){
+    public double getAverageRating(Place place){
         List<Rating> ratings =  ratingRepository.getRatingByPlace(place);
         if(ratings.size() == 0){
             return 0;
@@ -49,6 +62,6 @@ public class RatingService {
         for(Rating rating : ratings){
             sum += rating.getValue();
         }
-        return  sum / ratings.size();
+        return  (float)sum / ratings.size();
     }
 }

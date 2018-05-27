@@ -2,17 +2,19 @@
     <div class="col-sm-12">
         <div class="bs-calltoaction bs-calltoaction-default" ng-repeat="place in places">
             <div class="row">
-                <div class="col-md-9 cta-contents">
+                <div class="col-md-4">
+                    <img class="img-responsive" ng-src="{{place.image}}" alt="Nature">
+                </div>
+                <div class="col-md-8">
                     <h1 class="cta-title">{{place.name}}</h1>
                     <div class="cta-desc">
-                        <p>{{place.description}}</p>
-                        <a ng-href="user.html?id={{place.userCreated.id}}">place.userCreated.username</a>
-                        <p>createdBy: {{place.userCreated}}</p>
+                        <span>createdBy: </span><a ng-href="user.html?id={{place.userCreated.id}}">{{place.userCreated.username}}</a>
                         <p>This is a {{place.type}}</p>
+                        <p>{{place.city}}</p>
                     </div>
                 </div>
                 <div class="col-md-3 cta-button">
-                    <a ng-href="/place.html?id={{place.id}}" class="btn btn-lg btn-block btn-default">Go for It!</a>
+                    <a ng-href="/place.html?id={{place.id}}" class="btn btn-lg btn-block btn-default">Check place out</a>
                 </div>
             </div>
         </div>

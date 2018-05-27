@@ -22,10 +22,16 @@ public class RatingController {
     RatingService ratingService;
 
     @PostMapping(value = "/rating")
-    public void addRating(RatingDTO ratingDTO){
+    public void addRating(@RequestBody RatingDTO ratingDTO){
         CustomUserDetail userDetail = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userService.getUser(userDetail);
         ratingService.addRating(ratingDTO,user);
+    }
+    @PostMapping(value = "/myRating")
+    public int getMyRating(@RequestBody RatingDTO ratingDTO){
+        CustomUserDetail userDetail = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getUser(userDetail);
+        return ratingService.getMyRating(ratingDTO,user);
     }
 
     @PostMapping(value = "/rating/get")

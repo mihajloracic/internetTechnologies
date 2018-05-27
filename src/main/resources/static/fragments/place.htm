@@ -1,15 +1,21 @@
 <div class="container">
-    <h1>{{place.name}}</h1>
-    <h2>place rating: {{rating}}</h2>
-    <div>
-        <button ng-click="sendRating(1)">1</button>
-        <button ng-click="sendRating(2)">2</button>
-        <button ng-click="sendRating(3)">3</button>
-        <button ng-click="sendRating(4)">4</button>
-        <button ng-click="sendRating(5)">5</button>
+    <h1 class="text-center">{{place.name}}</h1>
+    <div ng-hide="{{place.approved}}" class="alert alert-danger">
+        <h2>THIS PLACES HAS NOT BEEN APPROVED BY ADMINS. IT WILL NOT APPEAR ON SEARCH AND CAN NOT BE ADDED ON VOTINGS</h2>
     </div>
+    <img class="img-rounded img-responsive center-block" ng-src="{{place.image}}" alt="Responsive image">
+    <div>
+        <h2>place rating: {{rating}}</h2>
+        <button ng-click="sendRating(1)" ng-class="getRating(1)" >1</button>
+        <button ng-click="sendRating(2)" ng-class="getRating(2)" >2</button>
+        <button ng-click="sendRating(3)" ng-class="getRating(3)" >3</button>
+        <button ng-click="sendRating(4)" ng-class="getRating(4)" >4</button>
+        <button ng-click="sendRating(5)" ng-class="getRating(5)">5</button>
+    </div>
+    <hr>
+    <p>{{place.description}}</p>
+    <hr>
     <h2>Comments:</h2>
-    <p ng-repeat="comment in comments">{{comment.text}}</p>
     <input type='text' ng-model='ct'><button ng-click="addComment(ct)">add comment</button>
-
+    <p ng-repeat="comment in comments">{{comment.text}}</p>
 </div>
