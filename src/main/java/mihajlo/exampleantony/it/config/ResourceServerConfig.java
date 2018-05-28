@@ -15,6 +15,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/","/home","/register","/login","/place/**").permitAll()
                 .antMatchers("/private/**").authenticated();
+
     }
 
 

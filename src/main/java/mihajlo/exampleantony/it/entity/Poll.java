@@ -12,16 +12,9 @@ public class Poll {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
-    @JoinTable(name = "poll_user",
-            joinColumns = { @JoinColumn(name = "poll_id") },
-            inverseJoinColumns = { @JoinColumn(name = "user_id") })
+    @OneToMany(fetch = FetchType.LAZY)
     Set<User> users = new HashSet<>();
-    @ManyToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     Set<Place> places = new HashSet<>();
     @JsonIgnore
     Date dateCreated;
@@ -29,6 +22,8 @@ public class Poll {
     @ManyToOne
     User userCreated;
     String description;
+    @OneToMany(fetch = FetchType.LAZY)
+    Set<Vote> votes = new HashSet();
     public Long getId() {
         return id;
     }
@@ -92,5 +87,13 @@ public class Poll {
 
     public void setUserCreated(User userCreated) {
         this.userCreated = userCreated;
+    }
+
+    public Set<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(Set<Vote> votes) {
+        this.votes = votes;
     }
 }

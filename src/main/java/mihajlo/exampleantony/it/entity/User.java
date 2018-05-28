@@ -28,13 +28,7 @@ public class User {
     @JsonIgnore
     private List<Place> myPlaces;
     private Date dateCreated;
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            },
-            mappedBy = "users")
+    @OneToMany(fetch = FetchType.EAGER)
     Set<Poll> polls = new HashSet<>();
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore
