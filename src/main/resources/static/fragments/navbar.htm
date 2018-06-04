@@ -2,26 +2,24 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <a class="navbar-brand" href="/index.html">Home</a>
             <a class="navbar-brand" ng-show="loggedIn" href="#">{{user.username}}</a>
             <a class="navbar-brand" ng-hide="loggedIn" href="/login.html">Login</a>
-            <a class="navbar-brand" href="/index.html">Home</a>
+            <a class="navbar-brand" ng-hide="loggedIn" href="/register.html">Register</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
+                <li class="dropdown" ng-show="loggedIn">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin actions <span class="caret"></span></a>
+                    <ul class="dropdown-menu" >
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                         <li><a href="/approve.html">Approve place</a></li>
@@ -32,19 +30,19 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
+            <ul class="nav navbar-nav navbar-right" ng-show="loggedIn">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User actions <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="/newpole.html">New pole</a></li>
                         <li><a href="/mypoles.html">My poles</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">My profile</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#" ng-click="logout()">Logout</a></li>
                     </ul>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
+
 </nav>
