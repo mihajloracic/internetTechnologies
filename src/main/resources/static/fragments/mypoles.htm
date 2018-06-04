@@ -1,0 +1,13 @@
+<div class="container" ng-controller="mypolesController">
+    <div ng-repeat="pole in polles">
+        <hr>
+        <a ng-href="#">{{pole.description}}</a>
+        <h2>Users invited</h2>
+        <span ng-repeat="user in pole.users">
+            <a ng-href="#">{{user.username}}</a>
+        </span>
+        <h2></h2>
+
+        <h3>User created: <a ng-href="/user.html?id=pole.userCreated.id">{{pole.userCreated.username}}</a></h3>
+    </div>
+</div>

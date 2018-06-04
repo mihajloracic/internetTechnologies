@@ -12,17 +12,16 @@ public class Poll {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     Set<User> users = new HashSet<>();
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     Set<Place> places = new HashSet<>();
-    @JsonIgnore
     Date dateCreated;
     Date dateEnding;
     @ManyToOne
     User userCreated;
     String description;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     Set<Vote> votes = new HashSet();
     public Long getId() {
         return id;

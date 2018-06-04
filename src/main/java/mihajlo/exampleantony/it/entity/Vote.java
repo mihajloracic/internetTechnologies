@@ -15,12 +15,13 @@ public class Vote {
     User user;
     @ManyToOne
     Poll poll;
-    @OneToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     List<Place> places = new ArrayList<>();
 
-    public Vote(User user, Poll poll) {
+    public Vote(User user, Poll poll, List<Place> places) {
         this.user = user;
         this.poll = poll;
+        this.places = places;
     }
 
     public Long getId() {

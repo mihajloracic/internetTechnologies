@@ -1,0 +1,79 @@
+<div class="container">
+    <h2>Places</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th class="col-md-2" scope="col">#</th>
+            <th class="col-md-3" scope="col">Place</th>
+            <th class="col-md-5" scope="col">Type</th>
+            <th class="col-md-2" scope="col">Add place</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="place in places">
+            <td class="col-md-2" scope="row">{{place.id}}</td>
+            <td class="col-md-3"><a ng-href="/place.html?id={{place.id}}">{{place.name}}</a></td>
+            <td class="col-md-5">{{place.type}}</td>
+            <td class="col-md-2"><a><span class="glyphicon glyphicon-ok" ng-click="addPlaces(place)"></span></a></td>
+        </tr>
+
+        </tbody>
+    </table>
+    <h2>Added places</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th class="col-md-2" scope="col">#</th>
+            <th class="col-md-3" scope="col">Place</th>
+            <th class="col-md-5" scope="col">Type</th>
+            <th class="col-md-2" scope="col">Add place</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="place in poll.places">
+            <td class="col-md-2" scope="row">{{place.id}}</td>
+            <td class="col-md-3"><a ng-href="/place.html?id={{place.id}}">{{place.name}}</a></td>
+            <td class="col-md-5">{{place.type}}</td>
+            <td class="col-md-2"><a><span class="glyphicon glyphicon-trash" ng-click="removePlace(place)"></span></a></td>
+        </tr>
+
+        </tbody>
+    </table>
+    <h2>Users</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th class="col-md-2" scope="col">#</th>
+            <th class="col-md-3" scope="col">Username</th>
+            <th class="col-md-2" scope="col">Add user</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in users">
+            <td class="col-md-2" scope="row">{{user.id}}</td>
+            <td class="col-md-8"><a ng-href="/user.html?id={{user.id}}">{{user.username}}</a></td>
+            <td class="col-md-2"><a><span class="glyphicon glyphicon-ok" ng-click="addUsers(user)"></span></a></td>
+        </tr>
+
+        </tbody>
+    </table>
+    <h2>Added users</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th class="col-md-2" scope="col">#</th>
+            <th class="col-md-3" scope="col">Username</th>
+            <th class="col-md-2" scope="col">Add user</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in poll.users">
+            <td class="col-md-2" scope="row">{{user.id}}</td>
+            <td class="col-md-8"><a ng-href="/user.html?id={{user.id}}">{{user.username}}</a></td>
+            <td class="col-md-2"><a><span class="glyphicon glyphicon-trash" ng-click="removeUser(user)"></span></a></td>
+        </tr>
+
+        </tbody>
+    </table>
+    <button ng-click="submitForm()"> Submit!</button>
+</div>

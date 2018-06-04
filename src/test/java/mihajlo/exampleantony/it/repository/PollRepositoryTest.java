@@ -24,21 +24,7 @@ public class PollRepositoryTest {
     UserRepositoryForTest userRepositoryForTest;
     @Autowired
     PlaceRepository placeRepository;
-    @Test
-    @Transactional
-    public void addUserToPoll(){
-        mockDataService.populateData();
-        User user = userRepositoryForTest.findByUsername("m1").get(0);
-        Poll poll = pollRepository.save(new Poll(new Date(123),user,"this is gonna be an epic night!"));
-        Long pollId = poll.getId();
-        poll.getUsers().add(user);
-        pollRepository.save(poll);
-        assert pollRepository.getOne(pollId).getUsers().size() == 1;
-        user = userRepositoryForTest.findByUsername("m2").get(0);
-        poll.getUsers().add(user);
-        pollRepository.save(poll);
-        assert pollRepository.getOne(pollId).getUsers().size() == 2;
-    }
+
 
     @Test
     @Transactional

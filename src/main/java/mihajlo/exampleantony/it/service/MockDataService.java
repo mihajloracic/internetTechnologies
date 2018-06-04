@@ -1,16 +1,13 @@
 package mihajlo.exampleantony.it.service;
 
-import mihajlo.exampleantony.it.entity.Comment;
-import mihajlo.exampleantony.it.entity.Place;
-import mihajlo.exampleantony.it.entity.Rating;
-import mihajlo.exampleantony.it.entity.User;
-import mihajlo.exampleantony.it.repository.CommentRepository;
-import mihajlo.exampleantony.it.repository.PlaceRepository;
-import mihajlo.exampleantony.it.repository.RatingRepository;
-import mihajlo.exampleantony.it.repository.UserRepositoryForTest;
+import mihajlo.exampleantony.it.entity.*;
+import mihajlo.exampleantony.it.repository.*;
+import mihajlo.exampleantony.it.service.voting.PollService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Calendar;
 
 @Service
 public class MockDataService {
@@ -30,9 +27,16 @@ public class MockDataService {
     @Autowired
     UserService userService;
 
+    @Autowired
+    PollService pollService;
+
+    @Autowired
+    PollRepository pollRepository;
+
     @Transactional
-    public void populateData(){
+    public void populateData()  {
         commentRepository.deleteAll();
+        pollRepository.deleteAll();
         ratingRepository.deleteAll();
         placeRepository.deleteAll();
         userRepositoryForTest.deleteAll();
@@ -73,6 +77,11 @@ public class MockDataService {
             Place commentServicePlace = new Place("comment service","","",123.0,123,"test city","pub",testUser);
             placeRepository.save(commentServicePlace);
             userService.save(new User("User","123","User.rac@gmail.com","mihajlo","racic"));
+            Poll poll = new Poll(new java.sql.Date(Calendar.getInstance().getTime().getTime()),u,"cool voting");
+            poll.getUsers().add(u);
+            poll.getPlaces().add(place1);
+            pollRepository.save(poll);
+            int asd = 2;
         }
     }
 }

@@ -50,15 +50,7 @@ public class PlaceServiceTest {
         assertThat(mockDataService).isNotNull();
     }
 
-    @Test
-    @Transactional
-    public void getMyPlacesTest(){
-        mockDataService.populateData();
-        List<User> users =  userRepositoryForTest.findByUsername("m2");
-        User user = userRepositoryForTest.findByUsername("m2").get(0);
-        List<Place> places = adminPlaceService.getMyPlaces(user);
-        assert places.size() == 1;
-    }
+
     public void getMyPlacesTest2(){
         mockDataService.populateData();
         User user = userRepositoryForTest.findByUsername("m1").get(0);

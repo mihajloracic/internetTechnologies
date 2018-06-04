@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -44,4 +45,8 @@ public class UserService {
         }
         throw new Exception("Unauthorize, no rolle");
     }
+    public List<User> getUsers(){
+        return repo.findAll();
+    }
+
 }
