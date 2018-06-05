@@ -2,41 +2,73 @@
 <html>
 <head>
   <!-- Required meta tags -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <h1> Sign up ! </h1>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
-<body>
-  <div class="jumbotron">
-    <form>
-  <div class="form-group">
-    <label for="InputUsername">Username</label>
-    <input type="commentText" class="form-control" id="InputUsername" aria-describedby="UsernameHelp" placeholder="Enter username">
-  </div>
-  <div class="form-group">
-    <label for="InputEmail">Email</label>
-    <input type="commentText" class="form-control" id="InputEmail" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="InputPassword">Password</label>
-    <input type="password" class="form-control" id="InputPassword" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="InputFirstName">First Name</label>
-    <input type="commentText" class="form-control" id="InputFirstName" placeholder="First Name">
-  </div>
-  <div class="form-group">
-    <label for="InputLastName">Last Name</label>
-    <input type="commentText" class="form-control" id="InputLastName" placeholder="Last Name">
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-  </div>
+<body ng-app="myApp">
+<h1> Sign up ! </h1>
+<div class="jumbotron" ng-controller="registerController">
+  <form>
+    <div class="form-group">
+      <label for="InputUsername">Username</label>
+      <input ng-model="user.username" type="commentText" class="form-control" id="InputUsername" aria-describedby="UsernameHelp" placeholder="Enter username">
+    </div>
+    <div class="form-group">
+      <label for="InputEmail">Email</label>
+      <input ng-model="user.email" type="email" class="form-control" id="InputEmail" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <label for="InputPassword">Password</label>
+      <input ng-model="user.password" type="password" class="form-control" id="InputPassword" placeholder="Password" required>
+    </div>
+    <div class="form-group">
+      <label for="InputPassword2">Repeat password</label>
+      <input ng-model="passwordRepeat" type="password" class="form-control" id="InputPassword2" placeholder="Repeat password" required>
+    </div>
+    <div class="form-group">
+      <label for="InputFirstName">First Name</label>
+      <input ng-model="user.firstname" type="commentText" class="form-control" id="InputFirstName" placeholder="First Name" required>
+    </div>
+    <div class="form-group">
+      <label for="InputLastName">Last Name</label>
+      <input ng-model="user.lastname" type="commentText" class="form-control" id="InputLastName" placeholder="Last Name" required>
+    </div>
+    <div class="form-group">
+      <label for="InputLastName">Image link</label>
+      <input ng-model="user.image" type="commentText" class="form-control"  placeholder="www.facebook.com/user/12321323" required>
+    </div>
+    <button type="submit" ng-click="submitForm()" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
 </body>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('registerController', function($scope, $http) {
+        $scope.user = null;
+        $scope.submitForm = function(){
+            if($scope.user.password != $scope.passwordRepeat){
+                window.alert("Passwords dont match");
+                return;
+            }
+            data = $scope.poll;
+            var config = {
+                headers : {
+                    'Content-Type': 'application/json'
+                }
+            };
+            $http.post('/user/register', $scope.user, config).then(
+                function(response){
+                    window.location = "/login.html"
+                },
+                function(response){
+                    window.alert("usernem/email already taken");
+                }
+            );
+        }
+    });
+</script>
 </html>

@@ -74,6 +74,7 @@ public class User {
         this.lastname = lastname;
         this.image = image;
         this.dateCreated =  new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        this.roles = Arrays.asList(new Role("USER"));
     }
 
     public Long getId() {

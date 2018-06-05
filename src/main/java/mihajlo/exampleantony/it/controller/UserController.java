@@ -3,6 +3,7 @@ package mihajlo.exampleantony.it.controller;
 import mihajlo.exampleantony.it.entity.CustomUserDetail;
 import mihajlo.exampleantony.it.entity.Role;
 import mihajlo.exampleantony.it.entity.User;
+import mihajlo.exampleantony.it.entity.dto.UserDTO;
 import mihajlo.exampleantony.it.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,8 +23,8 @@ public class UserController {
     UserService userService;
 
     @PostMapping(value = "/user/register")
-    public void register(@RequestBody User user){
-        userService.save(user);
+    public void register(@RequestBody UserDTO user){
+        userService.save(user.getUser());
     }
     @PostMapping(value = "/user/add_super_admin")
     public void registerSuperAdmin(@RequestBody User user) throws Exception {
@@ -44,6 +45,12 @@ public class UserController {
         CustomUserDetail userDetail = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userService.getUser(userDetail);
         return user;
+    }
+    @GetMapping(value = "/user/roles")
+    public List<Role> getMyRoles(){
+        CustomUserDetail userDetail = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getUser(userDetail);
+        return user.getRoles();
     }
 
     @GetMapping(value = "/user")

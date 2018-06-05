@@ -77,6 +77,9 @@ public class MockDataService {
             Place commentServicePlace = new Place("comment service","","",123.0,123,"test city","pub",testUser);
             placeRepository.save(commentServicePlace);
             userService.save(new User("User","123","User.rac@gmail.com","mihajlo","racic"));
+            User useasesad = userRepositoryForTest.findByUsername("User").get(0);
+            useasesad.getRoles().add(new Role("ADMIN"));
+            userRepositoryForTest.save(useasesad);
             Poll poll = new Poll(new java.sql.Date(Calendar.getInstance().getTime().getTime()),u,"cool voting");
             poll.getUsers().add(u);
             poll.getPlaces().add(place1);
