@@ -112,6 +112,7 @@ public class MockDataService {
             userService.save(new User("Admin","123","admin.rac@gmail.com","mihajlo","racic","https://scontent.fvno3-1.fna.fbcdn.net/v/t1.0-9/14063896_10201914928712972_71179004568042813_n.jpg?_nc_cat=0&oh=6c60348611f95a3a2ac45b862009983e&oe=5BBEB9F5"));
             User adminUser = userRepositoryForTest.findByUsername("Admin").get(0);
             adminUser.setRoles(Arrays.asList(new Role("USER"), new Role("ADMIN"), new Role("SUPER_ADMIN")));
+
         }
     }
 }
