@@ -10,6 +10,7 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Column(columnDefinition="TEXT")
     String text;
     @ManyToOne
     User user;

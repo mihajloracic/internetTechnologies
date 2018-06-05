@@ -17,5 +17,15 @@
     <hr>
     <h2>Comments:</h2>
     <input type='text' ng-model='ct'><button ng-click="addComment(ct)">add comment</button>
-    <p ng-repeat="comment in comments">{{comment.text}}</p>
+    <br>
+    <div class="row" ng-repeat="comment in comments">
+        <div class="col-md-6">{{comment.text}}</div>
+        <div class="col-md-5"><span>user: </span><a ng-href="usersa.html?id={{comment.user.id}}">{{comment.user.username}}</a></div>
+        <div class="col-md-1">
+            <img class="img-responsive" ng-src="{{comment.user.image}}" alt="{{comment.user.username}}">
+        </div>
+        <hr>
+    </div>
+    <p></p>
+
 </div>
