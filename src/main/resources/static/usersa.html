@@ -10,14 +10,29 @@
 <body ng-app="myApp">
 <div ng-controller="navbarcontroller" ng-include="'fragments/navbar.htm'"></div>
 <div ng-controller="userController" >
-    <h1>{{name}}</h1>
+    <div class="container">
+        <h1>{{user.username}}</h1>
+        <div class="col-md-4">
+            <img class="img-responsive" ng-src="{{user.image}}" alt="Nature">
+        </div>
+        <div class="col-md-4">
+
+            <h2>{{user.firstname}}</h2>
+            <h2>{{user.lastname}}</h2>
+            <h2>{{user.email}}</h2>
+            <p></p>
+        </div>
+
+    </div>
 </div>
 <div  ng-include="'fragments/footer.htm'"></div>
 <script src="js/nav.js"></script>
 <script>
     app.controller('userController', function($scope, $http, $rootScope) {
         $scope.name = 'mihajlo';
-        getUrlVars()["id"];
+        $http.get("/user/byId?id="+getUrlVars()["id"]).then(function (response) {
+            $scope.user = response.data;
+        });
     });
     function getUrlVars()
     {
