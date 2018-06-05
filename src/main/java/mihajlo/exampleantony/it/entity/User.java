@@ -19,10 +19,10 @@ public class User {
     @JsonIgnore
     private String password;
     @Column(unique=true)
-    @JsonIgnore
     private String email;
     private String firstname;
     private String lastname;
+    @Column(columnDefinition="TEXT")
     private String image;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "userCreated",fetch = FetchType.LAZY)
     @JsonIgnore

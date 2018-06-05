@@ -15,6 +15,7 @@
         <tr>
             <th class="col-md-2" scope="col">#</th>
             <th class="col-md-3" scope="col">Username</th>
+            <th class="col-md-3" scope="col">Roles</th>
             <th class="col-md-2" scope="col">Make admin</th>
             <th class="col-md-2" scope="col">MAKE SUPER ADMIN</th>
         </tr>
@@ -22,7 +23,8 @@
         <tbody>
         <tr ng-repeat="user in users">
             <td class="col-md-2" scope="row">{{user.id}}</td>
-            <td class="col-md-8"><a ng-href="/user.html?id={{user.id}}">{{user.username}}</a></td>
+            <td class="col-md-3"><a ng-href="/usersa.html?id={{user.id}}">{{user.username}}</a></td>
+            <td class="col-md-3"><a ng-href="#">{{user.roles}}</a></td>
             <td class="col-md-2"><a><span class="glyphicon glyphicon-ok" ng-click="makeAdmin(user)"></span></a></td>
             <td class="col-md-2"><a><span class="glyphicon glyphicon-ok" ng-click="makeSuperAdmin(user)"></span></a></td>
         </tr>
@@ -35,8 +37,27 @@
     app.controller('editusercontroller', function($scope, $http, $rootScope) {
         $http.get("/user").then(function (response) {
             $scope.users = response.data;
-            console.log($scope.users);
         });
+        $scope.makeSuperAdmin = function(user){
+            $http.post('/user/add_super_admin?access_token='+localStorage.getItem("token"), user).then(
+                function(response){
+                    window.alert('sucess');
+                },
+                function(response){
+                    window.alert('error');
+                }
+            );
+        }
+        $scope.makeAdmin = function(user){
+            $http.post('/user/add_admin?access_token='+localStorage.getItem("token"), user).then(
+                function(response){
+                    window.alert('sucess');
+                },
+                function(response){
+                    window.alert('error');
+                }
+            );
+        }
     });
 </script>
 

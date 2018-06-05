@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/index.html">Home</a>
-            <a class="navbar-brand" ng-show="loggedIn" href="#">{{user.username}}</a>
+            <a class="navbar-brand" ng-show="loggedIn"  ng-href="usersa.html?{{user.id}}">{{user.username}}</a>
             <a class="navbar-brand" ng-hide="loggedIn" href="/login.html">Login</a>
             <a class="navbar-brand" ng-hide="loggedIn" href="/register.html">Register</a>
         </div>
@@ -20,13 +20,11 @@
                 <li class="dropdown" ng-show="hasRole('ADMIN')">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin actions <span class="caret"></span></a>
                     <ul class="dropdown-menu" >
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="/approve.html">Approve place</a></li>
+                        <li><a href="/editusers.html" ng-show="hasRole('SUPER_ADMIN')">Edit users</a></li>
+                        <li><a href="/approve.html" ng-show="hasRole('SUPER_ADMIN')">Approve place</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="/saveplace.html">Add place</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
+
                     </ul>
                 </li>
             </ul>
@@ -36,7 +34,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="/newpole.html">New pole</a></li>
                         <li><a href="/mypoles.html">My poles</a></li>
-                        <li><a href="#">My profile</a></li>
+                        <li><a ng-href="usersa.html?{{user.id}}">My profile</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#" ng-click="logout()">Logout</a></li>
                     </ul>

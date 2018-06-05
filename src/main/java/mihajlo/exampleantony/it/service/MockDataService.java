@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.Calendar;
 
 @Service
@@ -43,8 +44,8 @@ public class MockDataService {
         if(userRepositoryForTest.findByUsername("m1").size() == 0){
             User u = userRepositoryForTest.save( new User("m1","123","m1.rac@gmail.com","mihajlo","racic"));
             User u2 = userRepositoryForTest.save( new User("Mihajlo","$2a$10$4UQxFJ0Txc3JJAlq6i7hgeRNQN5OoSpTt5NMKHKbPpeXdjWJDd4IO","m2.rac@gmail.com","mihajlo","racic","https://scontent.fvno3-1.fna.fbcdn.net/v/t1.0-1/p160x160/14063896_10201914928712972_71179004568042813_n.jpg?_nc_cat=0&oh=38e37aa55f2f48d058e21edc69d34f43&oe=5BB210B4"));
-			User u3 = userRepositoryForTest.save( new User("Antony","$2a$10$4UQxFJ0Txc3JJAlq6i7hgeRNQN5OoSpTt5NMKHKbPpeXdjWJDd4IO","m8.rac@gmail.com","Antony","Cabero","https://scontent.fvno3-1.fna.fbcdn.net/v/t1.0-1/p160x160/32416529_10209612180296421_7322381956451139584_n.jpg?_nc_cat=0&oh=fdaef23d6e809dc2302f5bb432bd01e2&oe=5B861829"));
-			User u4 = userRepositoryForTest.save( new User("Tomas","$2a$10$4UQxFJ0Txc3JJAlq6i7hgeRNQN5OoSpTt5NMKHKbPpeXdjWJDd4IO","m9.rac@gmail.com","Tomas","Ratru","https://scontent.fvno3-1.fna.fbcdn.net/v/t1.0-1/c0.1.160.160/p160x160/32264435_995036600662761_6341740115596935168_n.jpg?_nc_cat=0&oh=0e8d9a0499bacfa1f624577dae11053c&oe=5B7F081C"));
+			User u3 = userRepositoryForTest.save( new User("Antony","$2a$10$4UQxFJ0Txc3JJAlq6i7hgeRNQN5OoSpTt5NMKHKbPpeXdjWJDd4IO","m23.rac@gmail.com","Antony","Cabero","https://scontent.fvno3-1.fna.fbcdn.net/v/t1.0-1/p160x160/32416529_10209612180296421_7322381956451139584_n.jpg?_nc_cat=0&oh=fdaef23d6e809dc2302f5bb432bd01e2&oe=5B861829"));
+			User u4 = userRepositoryForTest.save( new User("Tomas","$2a$10$4UQxFJ0Txc3JJAlq6i7hgeRNQN5OoSpTt5NMKHKbPpeXdjWJDd4IO","m444.rac@gmail.com","Tomas","Ratru","https://scontent.fvno3-1.fna.fbcdn.net/v/t1.0-1/c0.1.160.160/p160x160/32264435_995036600662761_6341740115596935168_n.jpg?_nc_cat=0&oh=0e8d9a0499bacfa1f624577dae11053c&oe=5B7F081C"));
 			User u5 = userRepositoryForTest.save( new User("Cindy","$2a$10$4UQxFJ0Txc3JJAlq6i7hgeRNQN5OoSpTt5NMKHKbPpeXdjWJDd4IO","m5.rac@gmail.com","Cindy","Jouiller","https://scontent.fvno3-1.fna.fbcdn.net/v/t1.0-1/p160x160/19989579_102765900381788_9106960291791042257_n.jpg?_nc_cat=0&oh=3b5d409e3ce60d1afe2c37b0ac673266&oe=5BC29809"));
 			User u6 = userRepositoryForTest.save( new User("Nico","$2a$10$4UQxFJ0Txc3JJAlq6i7hgeRNQN5OoSpTt5NMKHKbPpeXdjWJDd4IO","m6.rac@gmail.com","Nico","Bertrand","https://scontent.fvno3-1.fna.fbcdn.net/v/t1.0-1/p160x160/32286514_10155328362996817_6486448567505387520_n.jpg?_nc_cat=0&oh=e2ce1987bef0aab1f676b1f1d36e8dff&oe=5B851A98"));
 			User u7 = userRepositoryForTest.save( new User("Flo","$2a$10$4UQxFJ0Txc3JJAlq6i7hgeRNQN5OoSpTt5NMKHKbPpeXdjWJDd4IO","m7.rac@gmail.com","Flo","Xavier","https://scontent.fvno3-1.fna.fbcdn.net/v/t1.0-1/p160x160/13511983_713811992090447_9025787682658878275_n.jpg?_nc_cat=0&oh=3eedc4eb85cd966a0d85db1eaa1d896a&oe=5BBBDDFA"));
@@ -111,7 +112,7 @@ public class MockDataService {
             int asd = 2;
             userService.save(new User("Admin","123","admin.rac@gmail.com","mihajlo","racic","https://scontent.fvno3-1.fna.fbcdn.net/v/t1.0-9/14063896_10201914928712972_71179004568042813_n.jpg?_nc_cat=0&oh=6c60348611f95a3a2ac45b862009983e&oe=5BBEB9F5"));
             User adminUser = userRepositoryForTest.findByUsername("Admin").get(0);
-            adminUser.setRoles(Arrays.asList(new Role("USER"), new Role("ADMIN")));
+            adminUser.setRoles(Arrays.asList(new Role("USER"), new Role("ADMIN"), new Role("SUPER_ADMIN")));
         }
     }
 }

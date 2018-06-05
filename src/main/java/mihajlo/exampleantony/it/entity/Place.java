@@ -15,6 +15,7 @@ public class Place {
     String name;
     @Column(columnDefinition="TEXT")
     String description;
+    @Column(columnDefinition="TEXT")
     String image;
     double lat;
     double lng;

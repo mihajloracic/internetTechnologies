@@ -13,7 +13,7 @@
         <tr ng-repeat="place in places">
             <th scope="row">{{place.id}}</th>
             <td><a ng-href="place.html?id={{place.id}}">{{place.name}}</a></td>
-            <td><a ng-href="user.html?id={{place.userCreated.id}}">{{place.userCreated.username}}</a></td>
+            <td><a ng-href="usersa.html?id={{place.userCreated.id}}">{{place.userCreated.username}}</a></td>
             <td><span class="glyphicon glyphicon-ok" ng-click="approve(place)"></span></a></td>
             <td><span class="glyphicon glyphicon-trash" ng-click="delete(place)"></span></a></td>
         </tr>
@@ -34,7 +34,7 @@
         <tr ng-repeat="place in allPlaces">
             <th scope="row">{{place.id}}</th>
             <td><a ng-href="place.html?id={{place.id}}">{{place.name}}</a></td>
-            <td><a ng-href="user.html?id={{place.userCreated.id}}">{{place.userCreated.username}}</a></td>
+            <td><a ng-href="user.htmlsa?id={{place.userCreated.id}}">{{place.userCreated.username}}</a></td>
             <td><span class="glyphicon glyphicon-trash" ng-click="delete(place)"></span></a></td>
         </tr>
         </tbody>
