@@ -58,6 +58,7 @@ public class MockDataService {
             Place bo2 = placeRepository.save(new Place("Bassement","orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","http://renginiai.kasvyksta.lt/uploads/places/1745/BASEMENT-BLack-background1.png",123.0,123,"Kaunas","club",u));
             placeRepository.save(new Place("Jampub","","",123.0,123,"Kaunas","pub",u));
             placeRepository.save(new Place("Vilnus pub","","",123.0,123,"Vilnus","pub",u));
+<<<<<<< HEAD
             Place place1 = new Place("Dzem'pub","Dzem'pub is a really nice pub that you can find on Laisves Aleia, the main street in city centre of Kaunas. You should go on the 5th floor of the building to reach the pub and you can find a really nice place to drink and dance. There is oftenly some events the Tuesday, Wednesday and Thursday such as karaoke or quizz.","https://naktiniaiklubai.lt/sites/naktiniaiklubai.lt/files/styles/place_gallery_colorbox/public/2015/10/15/dzem_pub_kaunas_pabas_naktiniaiklubai.lt_5.jpg?itok=XLwJg_27",123.0,123,"Kaunas","pub",u6);
             Place place2 = new Place("Mojo","Mojo is a lounge and club in the Old Town of Kaunas where you can dance, smoke narguile and of course drink as many as you can. It's a really nice place for students.","http://renginiai.kasvyksta.lt/uploads/places/296/mojo-lounge-klubas-kaunas-16.jpg",123.0,123,"Kaunas","club/lounge",u4);
             Place place3 = new Place("Deja Vu","Deja vu is a basement club just in front of the Old Town church in Kaunas. There is 2 rooms with different music where you can dance and drink. There is also a smoking area and the entrance is generally free.","https://naktiniaiklubai.lt/sites/naktiniaiklubai.lt/files/styles/place_gallery_colorbox/public/2015/10/16/dejavu_party_bar_naktinis_klubas_kaunas_naktiniaiklubai.lt_2.jpg?itok=Z2oJQmAm",123.0,123,"Kaunas","club",u2);
@@ -69,6 +70,19 @@ public class MockDataService {
 			Place place9 = new Place("Tabu","In a red-brick room, jazz and soul oozing from the speakers, a choice of decent-sized burgers is on offer including one that changes daily. Ours was fabulously spicy and apple-y. Alternatively, succulent pork that has been scraped off ribs is served in toasted baguettes. Or enjoy a chicken burger or fish and chips. Located towards the northern end of the city centre, it’s worth the wander.","http://retaildesignblog.net/wp-content/uploads/2015/02/Tabu-Restaurant-by-Ramunas-Manikas-Klaipeda-Lithuania.jpg",123.0,123,"Klaipeda","Restaurant",u6);
 			Place place10 = new Place("Kapitol","Nightclub Kapitol offers its visitors high-quality dance music, sincere service and one of the most delicious cocktails in the city!","http://tic.siauliai.lt/wp-content/uploads/2015/05/DSC_0016.jpg",123.0,123,"Siauliai","Club",u5);
 			
+=======
+            Place place1 = new Place("Dzem'pub","orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scsed in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","https://naktiniaiklubai.lt/sites/naktiniaiklubai.lt/files/styles/place_gallery_colorbox/public/2015/10/15/dzem_pub_kaunas_pabas_naktiniaiklubai.lt_5.jpg?itok=XLwJg_27",123.0,123,"Kaunas","pub",u6);
+            Place place2 = new Place("Mojo","orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scsed in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","http://renginiai.kasvyksta.lt/uploads/places/296/mojo-lounge-klubas-kaunas-16.jpg",123.0,123,"Kaunas","club/lounge",u4);
+            Place place3 = new Place("Deja Vu","orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scsed in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","https://naktiniaiklubai.lt/sites/naktiniaiklubai.lt/files/styles/place_gallery_colorbox/public/2015/10/16/dejavu_party_bar_naktinis_klubas_kaunas_naktiniaiklubai.lt_2.jpg?itok=Z2oJQmAm",123.0,123,"Kaunas","club",u2);
+			Place place4 = new Place("Peleda","orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scsed in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","https://scontent.fvno3-1.fna.fbcdn.net/v/t31.0-8/27912584_2418051274875248_4238812510760715030_o.jpg?_nc_cat=0&oh=9337dd08ee716f56a9565ddc13798b24&oe=5B7E4F15", 123.0,123,"Vilnius","Club",u7);
+			Place place5 = new Place("Opium","orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scsed in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","https://naktiniaiklubai.lt/sites/naktiniaiklubai.lt/files/styles/place_gallery_colorbox/public/2015/10/23/12047050_10153070429536472_5716152902254123395_n.jpg?itok=DUT97eJa",123.0,123,"Vilnius","Club",u3);
+			Place place6 = new Place("Republic","orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scsed in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","http://renginiai.kasvyksta.lt/uploads/places/231/republic-baras-kaunas-9.jpg",123.0,123,"Kaunas","bar",u3);
+			Place place7 = new Place("Steakhouse Hazienda","orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scsed in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","https://media-cdn.tripadvisor.com/media/photo-s/04/5a/ed/b0/hazienda.jpg",123.0,123,"Vilnius","Restaurant",u5);
+			Place place8 = new Place("Black Bar","orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scsed in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","https://igx.4sqi.net/img/general/600x600/58177035_zJRtEDR5J1HA8oSStuO7OPkhNgCmtajsD0-6YDGpXKE.jpg",123.0,123,"Siauliai","Pub",u4);
+			Place place9 = new Place("Tabu","orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scsed in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","http://retaildesignblog.net/wp-content/uploads/2015/02/Tabu-Restaurant-by-Ramunas-Manikas-Klaipeda-Lithuania.jpg",123.0,123,"Klaipeda","Restaurant",u6);
+			Place place10 = new Place("Kapitol","orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scsed in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","http://tic.siauliai.lt/wp-content/uploads/2015/05/DSC_0016.jpg",123.0,123,"Siauliai","Club",u5);
+
+>>>>>>> 3fc9d479f95054a5f91945313c47bdbeb9704a3f
             place1.setApproved(true);
             place2.setApproved(true);
             place3.setApproved(true);
@@ -77,11 +91,10 @@ public class MockDataService {
             place6.setApproved(true);
             place7.setApproved(true);
             place8.setApproved(true);
-            place9.setApproved(true);			
-			place10.setApproved(true);	
+            place9.setApproved(true);
+			place10.setApproved(true);
             bo.setApproved(true);
             bo2.setApproved(true);
-			
             placeRepository.save(bo);
             placeRepository.save(bo2);
             placeRepository.save(place1);
@@ -92,7 +105,7 @@ public class MockDataService {
             placeRepository.save(place6);
             placeRepository.save(place7);
             placeRepository.save(place8);
-            placeRepository.save(place9);			
+            placeRepository.save(place9);
 			placeRepository.save(place10);
             ratingRepository.save(new Rating(u,place1,5));
             ratingRepository.save(new Rating(u2,place1,3));
@@ -110,6 +123,9 @@ public class MockDataService {
             poll.getPlaces().add(place1);
             pollRepository.save(poll);
             int asd = 2;
+            userService.save(new User("Admin","123","admin.rac@gmail.com","mihajlo","racic","https://scontent.fvno3-1.fna.fbcdn.net/v/t1.0-9/14063896_10201914928712972_71179004568042813_n.jpg?_nc_cat=0&oh=6c60348611f95a3a2ac45b862009983e&oe=5BBEB9F5"));
+            User adminUser = userRepositoryForTest.findByUsername("Admin").get(0);
+            adminUser.setRoles(Arrays.asList(new Role("USER"), new Role("ADMIN")));
         }
     }
 }

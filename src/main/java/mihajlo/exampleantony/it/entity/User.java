@@ -31,7 +31,6 @@ public class User {
     @OneToMany(fetch = FetchType.EAGER)
     Set<Poll> polls = new HashSet<>();
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonIgnore
     List<Role> roles;
     public User(){
 
