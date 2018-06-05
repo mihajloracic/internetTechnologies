@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body ng-app="myApp">
+<div ng-controller="navbarcontroller" ng-include="'fragments/navbar.htm'"></div>
+<div ng-controller="editusercontroller" >
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th class="col-md-2" scope="col">#</th>
+            <th class="col-md-3" scope="col">Username</th>
+            <th class="col-md-2" scope="col">Make admin</th>
+            <th class="col-md-2" scope="col">MAKE SUPER ADMIN</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in users">
+            <td class="col-md-2" scope="row">{{user.id}}</td>
+            <td class="col-md-8"><a ng-href="/user.html?id={{user.id}}">{{user.username}}</a></td>
+            <td class="col-md-2"><a><span class="glyphicon glyphicon-ok" ng-click="makeAdmin(user)"></span></a></td>
+            <td class="col-md-2"><a><span class="glyphicon glyphicon-ok" ng-click="makeSuperAdmin(user)"></span></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div  ng-include="'fragments/footer.htm'"></div>
+<script src="js/nav.js"></script>
+<script>
+    app.controller('editusercontroller', function($scope, $http, $rootScope) {
+        $http.get("/user").then(function (response) {
+            $scope.users = response.data;
+            console.log($scope.users);
+        });
+    });
+</script>
+
+
+</body>
+</html>

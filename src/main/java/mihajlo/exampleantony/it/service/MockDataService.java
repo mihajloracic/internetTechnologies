@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.Calendar;
 
 @Service
@@ -61,6 +62,7 @@ public class MockDataService {
             place3.setApproved(true);
             bo.setApproved(true);
             bo2.setApproved(true);
+
             placeRepository.save(bo);
             placeRepository.save(bo2);
             placeRepository.save(place1);
@@ -82,6 +84,9 @@ public class MockDataService {
             poll.getPlaces().add(place1);
             pollRepository.save(poll);
             int asd = 2;
+            userService.save(new User("Admin","123","admin.rac@gmail.com","mihajlo","racic","https://scontent.fvno3-1.fna.fbcdn.net/v/t1.0-9/14063896_10201914928712972_71179004568042813_n.jpg?_nc_cat=0&oh=6c60348611f95a3a2ac45b862009983e&oe=5BBEB9F5"));
+            User adminUser = userRepositoryForTest.findByUsername("Admin").get(0);
+            adminUser.setRoles(Arrays.asList(new Role("USER"), new Role("ADMIN")));
         }
     }
 }
